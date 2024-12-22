@@ -17,7 +17,7 @@ GLSLシェーダーを使った実験的なビジュアルエフェクトを試�
 
 1. リポジトリをクローン：
 ```bash
-git clone https://github.com/yourusername/glsl-playground.git
+git clone https://github.com/Sunwood-ai-labs/glsl-playground.git
 ```
 
 2. プロジェクトディレクトリに移動：
@@ -72,6 +72,25 @@ for(float i = 0.0, g = 0.0, e = 0.0, s = 0.0; ++i < 85.0; o.rgb += hsv(g*i*0.1-0
 3. メインページ（`index.html`）のグリッドに新しいサンプルカードを追加
 4. プレビュー用のスクリプトを追加
 
+## 🎨 スタイルガイド
+
+### フォント
+プロジェクト全体で「Kaisei Decol」フォントを使用しています：
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol&display=swap" rel="stylesheet">
+```
+
+```css
+body {
+    font-family: "Kaisei Decol", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+```
+
 ## 🛠️ 技術スタック
 
 - WebGL2
@@ -90,6 +109,12 @@ for(float i = 0.0, g = 0.0, e = 0.0, s = 0.0; ++i < 85.0; o.rgb += hsv(g*i*0.1-0
 3. 変更をコミット (`git commit -am '✨ feat: 新しいエフェクトを追加'`)
 4. ブランチにプッシュ (`git push origin feature/amazing-effect`)
 5. プルリクエストを作成
+
+## 📋 最近の更新
+
+- ♻️ WebGLライブラリの共通化 (#2)
+- 💄 フォントをKaisei Decolに統一 (#2)
+- 🎨 サンプル選択UIの実装 (#2)
 
 ## ✨ 謝辞
 
