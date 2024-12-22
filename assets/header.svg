@@ -3,12 +3,31 @@
   <defs>
     <linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:1">
-        <animate attributeName="stop-color" values="#FF6B6B;#4ECDC4;#45B7D1;#FF6B6B" dur="10s" repeatCount="indefinite" />
+        <animate attributeName="stop-color" 
+                 values="#FF6B6B;#4ECDC4;#45B7D1;#9D50BB;#FF6B6B" 
+                 dur="15s" 
+                 repeatCount="indefinite" />
       </stop>
-      <stop offset="100%" style="stop-color:#4ECDC4;stop-opacity:1">
-        <animate attributeName="stop-color" values="#4ECDC4;#45B7D1;#FF6B6B;#4ECDC4" dur="10s" repeatCount="indefinite" />
+      <stop offset="50%" style="stop-color:#4ECDC4;stop-opacity:1">
+        <animate attributeName="stop-color" 
+                 values="#4ECDC4;#45B7D1;#9D50BB;#FF6B6B;#4ECDC4" 
+                 dur="15s" 
+                 repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" style="stop-color:#45B7D1;stop-opacity:1">
+        <animate attributeName="stop-color" 
+                 values="#45B7D1;#9D50BB;#FF6B6B;#4ECDC4;#45B7D1" 
+                 dur="15s" 
+                 repeatCount="indefinite" />
       </stop>
     </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
     <clipPath id="roundedRect">
       <rect x="0" y="0" width="800" height="200" rx="20" ry="20" />
     </clipPath>
@@ -16,9 +35,34 @@
   
   <g clip-path="url(#roundedRect)">
     <rect x="0" y="0" width="800" height="200" fill="url(#headerGradient)" />
-    <text x="400" y="120" font-family="Arial, sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="white">
-      GLSL Playground
-      <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite" />
+    
+    <!-- Animated background particles -->
+    <g>
+      <circle cx="100" cy="50" r="20" fill="white" opacity="0.1">
+        <animate attributeName="cy" values="50;150;50" dur="8s" repeatCount="indefinite" />
+        <animate attributeName="r" values="20;25;20" dur="4s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="700" cy="150" r="25" fill="white" opacity="0.1">
+        <animate attributeName="cy" values="150;50;150" dur="6s" repeatCount="indefinite" />
+        <animate attributeName="r" values="25;30;25" dur="3s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="400" cy="100" r="30" fill="white" opacity="0.1">
+        <animate attributeName="r" values="30;40;30" dur="5s" repeatCount="indefinite" />
+      </circle>
+    </g>
+
+    <!-- Main title with glow effect -->
+    <g filter="url(#glow)">
+      <text x="400" y="90" font-family="Arial, sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="white">
+        GLSL Playground
+        <animate attributeName="opacity" values="0.9;1;0.9" dur="3s" repeatCount="indefinite" />
+      </text>
+    </g>
+
+    <!-- Subtitle with fade-in animation -->
+    <text x="400" y="130" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="white" opacity="0.8">
+      Explore the Art of Shaders
+      <animate attributeName="opacity" values="0.7;0.9;0.7" dur="4s" repeatCount="indefinite" />
     </text>
   </g>
 </svg>
