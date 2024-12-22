@@ -7,7 +7,9 @@
 body {
     background-color: #1a1a1a;
     color: #ffffff;
-    font-family: 'Arial', sans-serif;
+    font-family: "Kaisei Decol", serif;
+    font-weight: 400;
+    font-style: normal;
     overflow: hidden;
 }
 
@@ -62,4 +64,92 @@ body {
 
 .github-link:hover {
     background-color: rgba(0, 0, 0, 0.9);
+}
+
+.back-link {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.back-link:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* メインページ用のスタイル */
+.examples-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    min-height: 100vh;
+}
+
+.header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.header img {
+    max-width: 100%;
+    height: auto;
+}
+
+.header p {
+    margin-top: 20px;
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+.examples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.example-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.example-card:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.example-title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.example-description {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.example-preview {
+    width: 100%;
+    height: 200px;
+    background-color: #000;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.example-preview canvas {
+    width: 100%;
+    height: 100%;
 }
