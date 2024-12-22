@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="200" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:1">
+        <animate attributeName="stop-color" values="#FF6B6B;#4ECDC4;#45B7D1;#FF6B6B" dur="10s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" style="stop-color:#4ECDC4;stop-opacity:1">
+        <animate attributeName="stop-color" values="#4ECDC4;#45B7D1;#FF6B6B;#4ECDC4" dur="10s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+    <clipPath id="roundedRect">
+      <rect x="0" y="0" width="800" height="200" rx="20" ry="20" />
+    </clipPath>
+  </defs>
+  
+  <g clip-path="url(#roundedRect)">
+    <rect x="0" y="0" width="800" height="200" fill="url(#headerGradient)" />
+    <text x="400" y="120" font-family="Arial, sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="white">
+      GLSL Playground
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite" />
+    </text>
+  </g>
+</svg>
