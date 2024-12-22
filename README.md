@@ -8,15 +8,16 @@ GLSLシェーダーを使った実験的なビジュアルエフェクトを試�
 
 ## 🌟 特徴
 
-- WebGLを使用したリアルタイムシェーダーレンダリング
-- インタラクティブなパラメータ調整
-- 事前定義された美しいシェーダーエフェクト
+- WebGL2を使用したリアルタイムシェーダーレンダリング
+- モジュール化された再利用可能なWebGLライブラリ
+- 複数のシェーダーエフェクトサンプル
+- プレビュー付きのサンプル選択システム
 
 ## 🚀 使い方
 
 1. リポジトリをクローン：
 ```bash
-git clone https://github.com/yourusername/glsl-playground.git
+git clone https://github.com/Sunwood-ai-labs/glsl-playground.git
 ```
 
 2. プロジェクトディレクトリに移動：
@@ -26,31 +27,76 @@ cd glsl-playground
 
 3. `index.html`をブラウザで開く
 
-## 💡 シェーダーについて
+## 📁 プロジェクト構造
 
-このプロジェクトには以下のシェーダーエフェクトが含まれています：
+```
+glsl-playground/
+├── assets/           # 画像などの静的アセット
+├── css/             # スタイルシート
+├── js/              # JavaScriptファイル
+│   └── lib/         # 共通ライブラリ
+├── examples/        # シェーダーサンプル
+│   └── rainbow-warp/  # レインボーワープエフェクト
+│       ├── js/
+│       └── shaders/
+└── index.html       # メインページ
+```
+
+## 💡 シェーダーサンプル
 
 ### 🌈 レインボーワープ
+ワープ効果とカラフルなグラデーションを組み合わせた視覚的効果を生成します。
+
 ```glsl
-GLSL for(float i,g,e,s;++i<85.;o.rgb+=hsv(g*i*.1-.5,e,s/5e2)){
-    vec3 p=vec3((FC.xy-.5*r)/r.y+vec2(0,1.1),g+.1);
-    p.zx*=rotate2D(t*.5);
-    s=2.;
-    for(int i;i++<12;p=vec3(2,5,2)-abs(abs(p)*e-vec3(5,4,4)))
-        s*=e=max(1.02,12./dot(p,p));
-    g+=mod(length(p.xz),p.y)/s;
-    s=log2(s*.2);
+// シェーダーのハイライト
+for(float i = 0.0, g = 0.0, e = 0.0, s = 0.0; ++i < 85.0; o.rgb += hsv(g*i*0.1-0.5, e, s/5e2)) {
+    vec3 p = vec3((FC.xy-0.5*r)/r.y+vec2(0,1.1), g+0.1);
+    p.zx *= rotate2D(t*0.5);
+    // ...
 }
 ```
 
-このシェーダーは、ワープ効果とカラフルなグラデーションを組み合わせた視覚的効果を生成します。
+## 🔧 新しいサンプルの追加方法
+
+1. `examples`ディレクトリに新しいサンプル用のディレクトリを作成
+2. 以下のファイル構造に従ってファイルを作成：
+   ```
+   examples/your-effect/
+   ├── js/
+   │   └── app.js
+   ├── shaders/
+   │   ├── vertex.glsl
+   │   └── fragment.glsl
+   └── index.html
+   ```
+3. メインページ（`index.html`）のグリッドに新しいサンプルカードを追加
+4. プレビュー用のスクリプトを追加
+
+## 🎨 スタイルガイド
+
+### フォント
+プロジェクト全体で「Kaisei Decol」フォントを使用しています：
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol&display=swap" rel="stylesheet">
+```
+
+```css
+body {
+    font-family: "Kaisei Decol", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+```
 
 ## 🛠️ 技術スタック
 
-- WebGL
+- WebGL2
 - GLSL (OpenGL Shading Language)
-- JavaScript
-- HTML5
+- JavaScript (ES Modules)
+- HTML5 & CSS3
 
 ## 📝 ライセンス
 
@@ -63,6 +109,12 @@ GLSL for(float i,g,e,s;++i<85.;o.rgb+=hsv(g*i*.1-.5,e,s/5e2)){
 3. 変更をコミット (`git commit -am '✨ feat: 新しいエフェクトを追加'`)
 4. ブランチにプッシュ (`git push origin feature/amazing-effect`)
 5. プルリクエストを作成
+
+## 📋 最近の更新
+
+- ♻️ WebGLライブラリの共通化 (#2)
+- 💄 フォントをKaisei Decolに統一 (#2)
+- 🎨 サンプル選択UIの実装 (#2)
 
 ## ✨ 謝辞
 

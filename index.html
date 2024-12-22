@@ -4,18 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GLSL Playground</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container">
-        <canvas id="glCanvas"></canvas>
-        <div class="info">
-            GLSL Playground - レインボーワープエフェクト
+    <div class="examples-container">
+        <div class="header">
+            <img src="assets/header.svg" alt="GLSL Playground" width="800">
+            <p>GLSLシェーダーを使った実験的なビジュアルエフェクトのコレクション</p>
         </div>
+
+        <div class="examples-grid">
+            <!-- レインボーワープ -->
+            <a href="examples/rainbow-warp/index.html" class="example-card">
+                <div class="example-preview">
+                    <canvas id="preview-rainbow-warp"></canvas>
+                </div>
+                <h2 class="example-title">🌈 レインボーワープ</h2>
+                <p class="example-description">
+                    ワープ効果とカラフルなグラデーションを組み合わせた幻想的なビジュアルエフェクト
+                </p>
+            </a>
+
+            <!-- 新しいサンプルはここに追加 -->
+        </div>
+
         <a href="https://github.com/yourusername/glsl-playground" class="github-link" target="_blank">
             GitHub
         </a>
     </div>
-    <script src="js/webgl.js"></script>
+
+    <!-- プレビュー用のスクリプト -->
+    <script type="module">
+        import { WebGLApp } from './js/lib/webgl.js';
+
+        async function initPreviews() {
+            // レインボーワープのプレビュー
+            const rainbowCanvas = document.querySelector('#preview-rainbow-warp');
+            const rainbowApp = new WebGLApp(rainbowCanvas);
+            
+            try {
+                await rainbowApp.loadShader('main', 'examples/rainbow-warp/shaders/vertex.glsl', 'examples/rainbow-warp/shaders/fragment.glsl');
+                rainbowApp.start();
+            } catch (error) {
+                console.error('プレビューの初期化に失敗しました:', error);
+            }
+
+            // 新しいプレビューはここに追加
+        }
+
+        document.addEventListener('DOMContentLoaded', initPreviews);
+    </script>
 </body>
 </html>
